@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: #008F8E;
+  --background-end-rgb: #003F3F;
+}
+
+body {
+  background: linear-gradient(180deg, var(--background-start-rgb), var(--background-end-rgb));
+  height: 100vh;
+  overflow: hidden;
+}
+
+.wrapper {
+  @apply max-w-5xl mx-auto;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
