@@ -3,8 +3,8 @@ import Image from "next/image";
 
 const Hero = () => {
   return (
-    <div className="flex md:flex-row flex-col max-md:flex-col-reverse items-center md:px-6 justify-between">
-      <div className=" md:w-2/5 w-full flex flex-col max-md:items-center bg-white p-4 rounded-xl max-md:h-screen max-md:mt-14 relative">
+    <div className="flex md:flex-row flex-col max-md:flex-col-reverse items-center md:px-6 md:justify-between justify-start w-full h-full">
+      <div className=" md:w-2/5 w-full flex flex-col max-md:items-center bg-white p-4 md:rounded-xl rounded-t-xl pb-8 max-md:mt-14 relative">
         <Image
           src="/maskot-agrimart-tomi-1.png"
           alt="Agrimart Mascot - Tomi"
@@ -19,9 +19,9 @@ const Hero = () => {
         <button className=" bg-gradient-to-r from-green-200 to-green-300 text-white px-4 py-2 mt-4 max-sm::w-[353px] w-64 rounded-[15px]">
           Start Shopping
         </button>
-        <div className="w-32 h-32 rounded-full absolute right-1/2 translate-x-[50%] translate-y-[-50%] bg-white -z-50"></div>
+        <div className="w-32 h-32 rounded-full absolute right-1/2 translate-x-[50%] translate-y-[-35%] bg-white -z-50"></div>
       </div>
-      <div className="md:w-1/2 w-full flex flex-col max-md:items-center">
+      <div className=" flex flex-col max-md:items-center">
         <Image
           src="/a-girl-on-a-shopping-trip-with-packages.png"
           alt="Hero Image"

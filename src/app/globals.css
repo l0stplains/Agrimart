@@ -10,7 +10,6 @@
 
 body {
   background: linear-gradient(180deg, var(--background-start-rgb), var(--background-end-rgb));
-  height: 100vh;
   overflow: hidden;
 }
 
