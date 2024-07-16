@@ -14,7 +14,10 @@ html{
 }
 
 body {
+  height: 100dvh;
   background: linear-gradient(180deg, var(--background-start-rgb), var(--background-end-rgb));
+  background-attachment: fixed;
+  background-color: #003F3F;
   overflow-x: hidden;
 }
 
