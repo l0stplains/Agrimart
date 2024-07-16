@@ -17,7 +17,7 @@ export default async function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`wrapper ${poppins.className} flex flex-col justify-center relative bg-fixed`}>
+      <body className={` h-dvh wrapper ${poppins.className} flex flex-col justify-center relative bg-fixed`}>
         {children}
       </body>
     </html>

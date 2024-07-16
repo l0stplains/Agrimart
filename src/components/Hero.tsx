@@ -4,8 +4,8 @@ import Link from "next/link";
 
 const Hero = () => {
   return (
-    <div className="flex md:flex-row flex-col max-md:flex-col-reverse items-center md:px-6 md:justify-between justify-start w-full h-[max(600px,_100%)]">
-      <div className=" md:w-2/5 w-full flex flex-col max-md:items-center bg-white p-4 md:rounded-xl rounded-t-xl pb-8 max-md:mt-14 relative">
+    <div className="flex md:flex-row flex-col max-md:flex-col-reverse items-center md:px-6 justify-between max-md:pt-24 w-full h-[max(600px,_100%)]">
+      <div className=" md:w-2/5 w-full flex flex-col max-md:items-center bg-white p-4 md:rounded-xl rounded-t-xl pb-8 relative">
         <Image
           src="/maskot-agrimart-tomi-1.png"
           alt="Agrimart Mascot - Tomi"
@@ -30,6 +30,7 @@ const Hero = () => {
           alt="Hero Image"
           width={456}
           height={456}
+          className="md:w-[456px] md:h-[456px] w-[320px] h-[320px]"
         />
       </div>
     </div>
