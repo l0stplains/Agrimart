@@ -1,8 +1,29 @@
+'use client';
+
+import { intToRupiah, rupiahToInt } from "@/utils";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
 const Payment = () => {
+  const [bill, setBill] = React.useState(0);
+
+  React.useEffect(() => {
+    if (typeof window !== "undefined" && window.localStorage) {
+      const cart = localStorage.getItem("cart");
+      const tempCart = JSON.parse(cart || "{}");
+      let total = 0;
+      Object.keys(tempCart).forEach((key) => {
+        total += rupiahToInt(tempCart[key].product["Harga Jual"]) * tempCart[key].quantity;
+      });
+      setBill(total);
+    } else {
+      alert(
+        "Local Storage is not available\nYour cart will not be saved\nPlease use a modern browser to use this feature"
+      );
+    }
+  })
+
   return (
     <div className="h-full w-full flex justify-center  items-start">
       <div className="w-full grid grid-cols-6 max-md:grid-cols-1 place-items-center p-5 pb-10 mt-20">
@@ -12,7 +33,7 @@ const Payment = () => {
           </h1>
           <div className="w-full bg-white rounded-full h-14 flex justify-center items-center">
             <h1 className="text-2xl font-medium text-black text-center">
-              Rp 100.000
+              {intToRupiah(bill)}
             </h1>
           </div>
         </div>

@@ -88,13 +88,13 @@ const Products = ({ productsData, title }: ProductsProps) => {
         {Object.keys(cart).length != 0 && (
           <div>
           <div className=" bg-yellow rounded-full w-9 h-9 absolute -top-2 -left-5 z-20 flex justify-center items-center ">
-            <Image src="/alert.svg" alt="Alert Icon" width={8} height={17} />
+            <Image src="/alert.svg" alt="Alert Icon" width={8} height={17} priority />
           </div>
           <div className="animate-ping bg-yellow rounded-full w-7 h-7 absolute -top-1 -left-4 z-10 flex justify-center items-center ">
           </div>
           </div>
         )}
-        <Image src="/cart.svg" alt="Cart Icon" width={26} height={26} />
+        <Image src="/cart.svg" alt="Cart Icon" width={26} height={26} priority/>
       </button>
       </Link>
     </div>
