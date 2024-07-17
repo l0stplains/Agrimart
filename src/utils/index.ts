@@ -30,3 +30,11 @@ export async function fetchSpreadsheetData() {
   const parsedData = parseCSV(await res.text());
   return parsedData;
 }
+
+export function rupiahToInt(rupiah: string) {
+  return parseInt(rupiah.split(',')[0].replace(/\D/g, ""));
+}
+
+export function intToRupiah(int: number) {
+  return "Rp " + int.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1.");
+}
