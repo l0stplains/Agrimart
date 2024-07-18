@@ -31,6 +31,24 @@ export async function fetchSpreadsheetData() {
   return parsedData;
 }
 
+export const appendData = async (date: string, productName: string, totalBill: string, paymentMethod: string) => {
+  const response = await fetch('/api/confirm-transaction', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ date, productName, totalBill, paymentMethod }),
+  });
+
+  if (!response.ok) {
+    throw new Error('Failed to append data');
+  }
+
+  const data = await response.json();
+  return data;
+};
+
+
 export function rupiahToInt(rupiah: string) {
   return parseInt(rupiah.split(',')[0].replace(/\D/g, ""));
 }

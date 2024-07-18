@@ -4,14 +4,13 @@ import React from "react";
 import ProductCard from "./ProductCard";
 import { ProductProps } from "@/types";
 import Image from "next/image";
-import { rupiahToInt } from "@/utils";
 import { useEffect } from "react";
-import { Linden_Hill } from "next/font/google";
 import Link from "next/link";
 
 type ProductsProps = {
   productsData: ProductProps[];
   title: string;
+  path: string;
 };
 
 type CartProps = {
@@ -22,7 +21,7 @@ type CartProps = {
 };
 
 
-const Products = ({ productsData, title }: ProductsProps) => {
+const Products = ({ productsData, title, path }: ProductsProps) => {
   const [cart, setCart] = React.useState<CartProps>({});
 
   useEffect(() => {
@@ -57,11 +56,33 @@ const Products = ({ productsData, title }: ProductsProps) => {
         tempCart
       );
     }
-    console.log(JSON.stringify(tempCart));
     if (typeof window !== 'undefined' && window.localStorage) {
       localStorage.setItem('cart', JSON.stringify(tempCart));
     }
   };
+
+  const handleCartSubtractProduct = (product: ProductProps) => {
+    let tempCart: CartProps = {};
+    if (cart[product["Kode Barang"]]) {
+      if (cart[product["Kode Barang"]].quantity > 1) {
+        tempCart = {
+          ...cart,
+          [product["Kode Barang"]]: {
+            quantity: cart[product["Kode Barang"]].quantity - 1,
+            product: product,
+          },
+        }
+        setCart(tempCart);
+      } else {
+        tempCart = { ...cart };
+        delete tempCart[product["Kode Barang"]];
+        setCart(tempCart);
+      }
+      if (typeof window !== 'undefined' && window.localStorage) {
+        localStorage.setItem('cart', JSON.stringify(tempCart));
+      }
+    }
+  }
 
   return (
     <div className="h-full w-full p-5 flex flex-col items-center max-md:pt-24 pt-20">
@@ -79,11 +100,13 @@ const Products = ({ productsData, title }: ProductsProps) => {
             <ProductCard
               key={product["Kode Barang"]}
               product={product}
-              trigger={handleCartAddProduct}
+              triggerAdd={handleCartAddProduct}
+              triggerSubtract={handleCartSubtractProduct}
+              quantity={cart[product["Kode Barang"]] ? cart[product["Kode Barang"]].quantity : 0}
             />
           ))}
       </div>
-      <Link href="/payment">
+      <Link href={`/payment?source=${path}`}>
       <button className=" transition-transform ease-in-out hover:scale-105 fixed flex justify-center items-center left-1/2 -translate-x-1/2 bottom-8 w-16 h-12 font-semibold text-xl bg-red-200 rounded-2xl py-2 mt-6 shadow-[0px_2px_11px_6px_rgba(0,0,0,0.25)]">
         {Object.keys(cart).length != 0 && (
           <div>

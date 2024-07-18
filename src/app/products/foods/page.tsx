@@ -30,7 +30,7 @@ const page = async ({
   return (
     <div className='h-full'>
       <Navbar includeSearchBar={true}/>
-      <Products productsData={foodsData} title={foodsData.length ? 'Foods' : 'No product available!'} />
+      <Products productsData={foodsData} title={foodsData.length ? 'Foods' : 'No product available!'} path='foods'/>
     </div>
   )
 }
