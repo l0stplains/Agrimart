@@ -15,7 +15,7 @@ const Qris = ({ source }: { source: string }) => {
           </h1>
         </div>
         <Image
-          src="/qris.png"
+          src="/qris.jpg"
           alt="Qris payment QR code image"
           width={300}
           height={400}
